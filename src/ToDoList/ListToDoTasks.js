@@ -44,10 +44,11 @@ class ListToDoTasks extends React.Component {
             backUpTaskName : taskName
         })
     }
-
+    
+    // delete the task from list
     deleteTask(index) {
         let taskData = this.state.toDoListTasks;
-        taskData.splice(index, 1);
+        taskData.splice(index, 1); //remove the particular index
 
         this.setState({
             toDoListTasks : taskData,
@@ -55,13 +56,17 @@ class ListToDoTasks extends React.Component {
         })
     }
 
+    // save the task
     saveTask() {
         this.setState( {
             editableId : 0
         })
     }
-
+    
+    // when the edit action is cancelled
     cancelSave(index , itemId) {
+
+        // replace the edit data with backup data
         let newEditedTask = {
             id : itemId,
             taskName : this.state.backUpTaskName
